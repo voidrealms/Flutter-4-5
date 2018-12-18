@@ -18,6 +18,7 @@ class _State extends State<MyApp> {
   int _index = 0;
 
   @override
+  @mustCallSuper
   void initState() {
     _items = new List();
     _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.people), title: new Text('People')));
