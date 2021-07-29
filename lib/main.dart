@@ -13,13 +13,13 @@ class MyApp extends StatefulWidget {
 
 class _State extends State<MyApp> {
 
-  List<BottomNavigationBarItem> _items;
+  List<BottomNavigationBarItem> _items = <BottomNavigationBarItem>[];
   String _value = '';
   int _index = 0;
 
   @override
   void initState() {
-    _items = new List();
+    // _items = new List();
     _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.people), title: new Text('People')));
     _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.weekend), title: new Text('Weekend')));
     _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.message), title: new Text('Message')));
@@ -32,24 +32,24 @@ class _State extends State<MyApp> {
         title: new Text('Name here'),
       ),
       body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              new Text(_value)
-            ],
-          ),
-        )
+          padding: new EdgeInsets.all(32.0),
+          child: new Center(
+            child: new Column(
+              children: <Widget>[
+                new Text(_value)
+              ],
+            ),
+          )
       ),
       bottomNavigationBar: new BottomNavigationBar(
-          items: _items,
-        fixedColor: Colors.blue,
+        items: _items,
+        fixedColor: Colors.purpleAccent,
         currentIndex: _index,
         onTap: (int item) {
-            setState((){
-              _index = item;
-              _value = "Current value is: ${_index.toString()}";
-            });
+          setState((){
+            _index = item;
+            _value = "Current value is: ${_index.toString()}";
+          });
         },
 
       ),
