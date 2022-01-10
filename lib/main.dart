@@ -1,55 +1,56 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new MaterialApp(
-    home: new MyApp(),
+  runApp(MaterialApp(
+    home: MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
   @override
-  _State createState() => new _State();
+  _State createState() => _State();
 }
 
 class _State extends State<MyApp> {
 
-  List<BottomNavigationBarItem> _items;
+  List<BottomNavigationBarItem> _items = [];
   String _value = '';
   int _index = 0;
 
   @override
   void initState() {
-    _items = new List();
-    _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.people), title: new Text('People')));
-    _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.weekend), title: new Text('Weekend')));
-    _items.add(new BottomNavigationBarItem(icon: new Icon(Icons.message), title: new Text('Message')));
+    //_items = new List();
+    _items = []; //Needed if you have null safety enabled
+    _items.add( const BottomNavigationBarItem(icon: Icon(Icons.people), label: 'People'));
+    _items.add( const BottomNavigationBarItem(icon: Icon(Icons.weekend), label: 'Weekend'));
+    _items.add( const BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Message'));
   }
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Name here'),
+    return Scaffold(
+      appBar:  AppBar(
+        title:  const Text('Name here'),
       ),
-      body: new Container(
-        padding: new EdgeInsets.all(32.0),
-        child: new Center(
-          child: new Column(
-            children: <Widget>[
-              new Text(_value)
-            ],
-          ),
-        )
+      body:  Container(
+          padding: const EdgeInsets.all(32.0),
+          child: Center(
+            child: Column(
+              children: <Widget>[
+                 Text(_value)
+              ],
+            ),
+          )
       ),
-      bottomNavigationBar: new BottomNavigationBar(
-          items: _items,
+      bottomNavigationBar: BottomNavigationBar(
+        items: _items,
         fixedColor: Colors.blue,
         currentIndex: _index,
         onTap: (int item) {
-            setState((){
-              _index = item;
-              _value = "Current value is: ${_index.toString()}";
-            });
+          setState((){
+            _index = item;
+            _value = "Current value is: ${_index.toString()}";
+          });
         },
 
       ),
